@@ -1,7 +1,8 @@
 from generador_clave import generarClave
 
 def generarRitmo(clave):
-    cantidad_subdivision = int(clave[0])
-    subdivision_base = int(clave[2])
+    print(clave)
+    cantidad_subdivision = clave[0]
+    subdivision_base = clave[1]
     return cantidad_subdivision, subdivision_base
 

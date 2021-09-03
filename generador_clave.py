@@ -1,6 +1,7 @@
 from generador_relleno import generarRelleno
 from player import player
 import random 
+import time
 
 def generarClave(cantidad_subdivision, subdivision_base):
     multiplos = [1, 2, 4]
@@ -22,12 +23,18 @@ def generarClave(cantidad_subdivision, subdivision_base):
 
     hihat = generarRelleno(clave, subdivision_clave)
     snare = generarRelleno(clave, subdivision_clave)
+    while (snare == hihat):
+        snare = generarRelleno(clave, subdivision_clave)
     kick = generarRelleno(clave, subdivision_clave)
+    while (snare == kick):
+        kick = generarRelleno(clave, subdivision_clave)
 
     ritmo = []
 
     ritmo.append(hihat)
     ritmo.append(snare)
     ritmo.append(kick)
+    
+    print(ritmo)
 
     return ritmo, factor

@@ -1,4 +1,6 @@
 from generador_relleno import generarRelleno
+from generador_relleno_piano import generarRellenoPiano
+from generador_relleno_melodia import generarRellenoMelodia
 from player import player
 import random 
 import time
@@ -7,7 +9,7 @@ def generarClave(cantidad_subdivision, subdivision_base):
     multiplos = [1, 2, 4]
     factor = random.choice(multiplos)
     clave = []
-    if factor == 1:
+    if factor == 1: #cambiar las posibles combinaciones.
         for i in range(0, cantidad_subdivision):
             clave.append(factor)
     else:
@@ -21,12 +23,15 @@ def generarClave(cantidad_subdivision, subdivision_base):
 
     subdivision_clave = factor * subdivision_base
 
+    melodia = generarRellenoMelodia(clave, subdivision_clave)
+    piano = generarRellenoPiano(clave, subdivision_clave)
+
     hihat = generarRelleno(clave, subdivision_clave)
     snare = generarRelleno(clave, subdivision_clave)
     while (snare == hihat):
         snare = generarRelleno(clave, subdivision_clave)
     kick = generarRelleno(clave, subdivision_clave)
-    while (snare == kick):
+    while ((snare == kick)):
         kick = generarRelleno(clave, subdivision_clave)
 
     ritmo = []
@@ -37,4 +42,4 @@ def generarClave(cantidad_subdivision, subdivision_base):
     
     print(ritmo)
 
-    return ritmo, factor
+    return ritmo, piano, melodia, factor

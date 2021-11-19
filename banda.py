@@ -29,7 +29,7 @@ def banda(ritmo, piano, acordes, melodia, escala, subdivision_tiempo):
 
     while True:
         for i in range(0, cantidadNotas):
-            if (ritmo[0][i] == 1):
+            '''if (ritmo[0][i] == 1):
                 sonido_hihat.play()
             if (ritmo[1][i] == 1):
                 sonido_snare.play()
@@ -58,7 +58,7 @@ def banda(ritmo, piano, acordes, melodia, escala, subdivision_tiempo):
             if acordes[piano[i]][0] == 'A#' or acordes[piano[i]][1] == 'A#' or acordes[piano[i]][2] == 'A#':
                 aSharp.play()
             if acordes[piano[i]][0] == 'B' or acordes[piano[i]][1] == 'B' or acordes[piano[i]][2] == 'B':
-                b.play()
+                b.play()'''
             if escala[melodia[i]] == 'C':
                 c.play()
             if escala[melodia[i]] == 'C#':

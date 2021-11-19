@@ -30,11 +30,13 @@ elif (clave_input == '2'):
     clave = [4, 4] 
 tempo = int(input("Ingrese el tempo (bpm): "))
 
+#VERSO
+
 cantidad_subdivision, subdivision_base = generarRitmo(clave)
 
 ritmo, piano, melodia, factor = generarClave(cantidad_subdivision, subdivision_base)
 
-print(piano)
+print(melodia)
 ritmo, subdivision_tiempo = player(ritmo, tempo, factor)
 
 

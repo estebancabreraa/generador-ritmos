@@ -20,7 +20,7 @@ def generarForma():
         estructura.append('v')
     
     if (puente):
-        for i in range(0, versoRepeticiones):
+        for i in range(0, puenteRepeticiones):
             estructura.append('p')
 
     for i in range(0, coroRepeticiones):
@@ -30,6 +30,8 @@ def generarForma():
         formas.append(estructura)
     
     print(formas)
+
+    return formas
 
 generarForma()
 

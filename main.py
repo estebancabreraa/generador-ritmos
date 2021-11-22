@@ -7,6 +7,7 @@ from player import player
 from generador_clave import generarClave
 from generador_ritmo import generarRitmo
 from generador_acordes import generarAcordes
+from generador_formas import generarForma
 from banda import banda
 
 
@@ -22,6 +23,8 @@ acordes = generarAcordes(nota_clave)
 
 escala = generarMelodia(nota_clave)
 
+forma = generarForma()
+
 
 clave_input = input("Clave:\n1. 3/4.\n2 4/4.\nIngrese la clave: ")
 if (clave_input == '1'):
@@ -34,24 +37,37 @@ tempo = int(input("Ingrese el tempo (bpm): "))
 
 cantidad_subdivision, subdivision_base = generarRitmo(clave)
 
-ritmo, piano, melodia, factor = generarClave(cantidad_subdivision, subdivision_base)
+ritmoVerso, pianoVerso, melodiaVerso, factor = generarClave(cantidad_subdivision, subdivision_base)
 
-print(melodia)
-ritmo, subdivision_tiempo = player(ritmo, tempo, factor)
+print(melodiaVerso)
+ritmoVerso, subdivision_tiempo = player(ritmoVerso, tempo, factor)
 
+#PUENTE
 
-#0, 1, 2
-#[0, 2, 0, 1, 1, 0, 2]
+cantidad_subdivision, subdivision_base = generarRitmo(clave)
 
+ritmoPuente, pianoPuente, melodiaPuente, factor = generarClave(cantidad_subdivision, subdivision_base)
 
-#ritmo2 = [[1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1], [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0], [1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0]]
+print(melodiaPuente)
+ritmoPuente, subdivision_tiempo = player(ritmoPuente, tempo, factor)
 
-#do re mi fa sol la si
-#1  2  3  4  5   6  7
-#102039487382923098
+#CORO
 
+cantidad_subdivision, subdivision_base = generarRitmo(clave)
 
-banda(ritmo, piano, acordes, melodia, escala, subdivision_tiempo)
+ritmoCoro, pianoCoro, melodiaCoro, factor = generarClave(cantidad_subdivision, subdivision_base)
+
+print(melodiaPuente)
+ritmoCoro, subdivision_tiempo = player(ritmoCoro, tempo, factor)
+
+for i in range(0, len(forma)):
+    for o in range (0, len(forma[i])):
+        if (forma[i][o] == 'v'):
+            banda(ritmoVerso, pianoVerso, acordes, melodiaVerso, escala, subdivision_tiempo)
+        if (forma[i][o] == 'p'):
+            banda(ritmoPuente, pianoPuente, acordes, melodiaPuente, escala, subdivision_tiempo)
+        if (forma[i][o] == 'c'):
+            banda(ritmoCoro, pianoCoro, acordes, melodiaCoro, escala, subdivision_tiempo)
  
 
 

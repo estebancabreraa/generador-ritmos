@@ -63,10 +63,13 @@ ritmoCoro, subdivision_tiempo = player(ritmoCoro, tempo, factor)
 for i in range(0, len(forma)):
     for o in range (0, len(forma[i])):
         if (forma[i][o] == 'v'):
+            print("VERSO")
             banda(ritmoVerso, pianoVerso, acordes, melodiaVerso, escala, subdivision_tiempo)
         if (forma[i][o] == 'p'):
+            print("PUENTE")
             banda(ritmoPuente, pianoPuente, acordes, melodiaPuente, escala, subdivision_tiempo)
         if (forma[i][o] == 'c'):
+            print("CORO")
             banda(ritmoCoro, pianoCoro, acordes, melodiaCoro, escala, subdivision_tiempo)
  
 
